@@ -1,0 +1,25 @@
+box1
+{
+	width = 50%;
+	length = 75%;
+	background-color: #000080;
+	border-radius: 15px;
+}
+
+box2
+{
+	width = 45%;
+	length = 70%;
+	background-color: white;
+	border-radius: 15px;
+}
+
+button
+{
+	
+}
+
+body
+{
+	color: white;
+}
