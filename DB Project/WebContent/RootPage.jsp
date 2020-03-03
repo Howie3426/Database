@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Root User</title>
 </head>
 <body>
-
+ 	<h1>Root User</h1>
+ 	<div class = "button">
+	<button type = "initialize" class = "initialize">Initialize Button</button>
+	</div>
 </body>
 </html>

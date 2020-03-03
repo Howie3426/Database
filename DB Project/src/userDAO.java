@@ -27,11 +27,15 @@ public class userDAO {
     }
 	       
     /**
+     * @return 
      * @see HttpServlet#HttpServlet()
      */
-    protected void connect_func() throws SQLException {
-        if (connect == null || connect.isClosed()) {
-            try {
+    public void connect_func() throws SQLException
+    {
+        if (connect == null || connect.isClosed()) 
+        {
+            try 
+            {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException e) {
                 throw new SQLException(e);
@@ -45,7 +49,7 @@ public class userDAO {
     
     public List<user> listAlluser() throws SQLException {
         List<user> listuser = new ArrayList<user>();        
-        String sql = "SELECT * FROM student";      
+        String sql = "SELECT * FROM user";      
         connect_func();      
         statement =  (Statement) connect.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
@@ -75,9 +79,8 @@ public class userDAO {
     
     public user getuser(String userName) throws SQLException {
     	user user = null;
-        String sql = "SELECT * FROM student WHERE userName = ?";
+        String sql = "SELECT * FROM user WHERE userName = ?";
          
-        connect_func();
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
         preparedStatement.setString(1, userName);

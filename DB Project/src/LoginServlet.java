@@ -23,6 +23,7 @@ import java.sql.PreparedStatement;
  * requests from the user.
  * @author www.codejava.net
  */
+//@SuppressWarnings("unused")
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet 
 {

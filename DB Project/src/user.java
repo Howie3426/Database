@@ -46,7 +46,7 @@ public class user
         return password;
     }
  
-    public void setStatus(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
  
@@ -62,7 +62,7 @@ public class user
         return lastName;
     }
  
-    public void setAddress(String lastName) {
+    public void setLast(String lastName) {
         this.lastName = lastName;
     }
     
@@ -75,6 +75,8 @@ public class user
     {
     	this.age = age;
     }
+
+
     
 
 }
