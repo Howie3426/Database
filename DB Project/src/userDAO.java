@@ -12,14 +12,15 @@ import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-/**
- * Servlet implementation class Connect
- */
-@WebServlet("/userDAO")
+
+
+@WebServlet("/PeopleDAO")
 public class userDAO {     
+	private static final long serialVersionUID = 1L;
 	private Connection connect = null;
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
+	private ResultSet resultSet = null;
 	
 	
 	public userDAO() {
@@ -27,15 +28,11 @@ public class userDAO {
     }
 	       
     /**
-     * @return 
      * @see HttpServlet#HttpServlet()
      */
-    public void connect_func() throws SQLException
-    {
-        if (connect == null || connect.isClosed()) 
-        {
-            try 
-            {
+    protected void connect_func() throws SQLException {
+        if (connect == null || connect.isClosed()) {
+            try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException e) {
                 throw new SQLException(e);
@@ -59,7 +56,7 @@ public class userDAO {
             String password = resultSet.getString("password");
             String firstName = resultSet.getString("firstName");
             String lastName = resultSet.getString("lastName");
-            int age = resultSet.getInt("age");
+            String age = resultSet.getString("age");
              
             user user = new user(userName,password, firstName, lastName, age);
             listuser.add(user);
@@ -91,7 +88,7 @@ public class userDAO {
             String password = resultSet.getString("password");
             String firstName = resultSet.getString("firstName");
             String lastName = resultSet.getString("lastName");
-            int age = resultSet.getInt("age");
+            String age = resultSet.getString("age");
              
             user = new user(userName, password, firstName, lastName, age);
         }
@@ -101,4 +98,5 @@ public class userDAO {
          
         return user;
     }
+    
 }

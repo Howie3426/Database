@@ -23,17 +23,6 @@
     <servlet-name>RegistrationServlet</servlet-name>
     <url-pattern>/RegistrationServlet</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-    <description></description>
-    <servlet-name>findAll</servlet-name>
-    <servlet-class>user.web.servlet.findAll</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>findAll</servlet-name>
-    <url-pattern>/findAll</url-pattern>
-  </servlet-mapping>
-  
-  
+ 
 </web-app>
   

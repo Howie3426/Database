@@ -1,3 +1,7 @@
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
+
+import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.DriverManager;
@@ -25,16 +29,18 @@ import java.sql.PreparedStatement;
  */
 //@SuppressWarnings("unused")
 @WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet 
+public class usermenu extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
     private userDAO userDAO;
     String dbURL ="jdbc:mysql://localhost:3306/database_project";
     String username = "john";
     String password = "pass1234";
+    Scanner input = new Scanner(System.in);
     
     
-    public void init() {
+    public void init() 
+    {
         userDAO = new userDAO(); 
     }
     
@@ -59,27 +65,29 @@ public class LoginServlet extends HttpServlet
         	System.out.println("User obtained");
         	String user = null;
         	user = request.getParameter(username);
+        	
+        	String url;
+        	String description;
+        	String title;
       
 			if(user == null)
         	{
-        		String LoginFailed = "Unable to login";
+        		String LoginFailed = "Not Logged in.";
 	        	request.setAttribute("loginFailed", LoginFailed);
 	        }
-        	else if(user.equals(request.getParameter("password")))
-	        {
-	        	String wPassword = "Wrong Password";
-	        	request.setAttribute("loginFailed", wPassword);
-	        }
-	        else if(user.equals("root"))
-	        {
-	        	RequestDispatcher dispatcher = request.getRequestDispatcher("RootLogin.jsp");
-	        	dispatcher.forward(request,response);
-	        }
-	        else
-	        {
-	         	RequestDispatcher dispatcher = request.getRequestDispatcher("LoginPage.jsp");
-	        	dispatcher.forward(request,response);
-	        }
+			else
+			{
+				System.out.print("Enter URL: ");
+				url = input.next();
+				System.out.print("Enter title: ");
+				title = input.nextLine();
+				System.out.print("Enter description: ");
+				description = input.nextLine();
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+				LocalDateTime now = LocalDateTime.now();  
+				System.out.println(dtf.format(now));  
+			}
+        
    }
         
 }

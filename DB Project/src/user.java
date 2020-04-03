@@ -5,7 +5,10 @@ public class user
 	protected String firstName;
 	protected String lastName;
 	protected String password;
-	protected int age;
+	protected String age;
+	protected String url;
+	protected String description;
+	protected String title;
 	
 	public user()
 	{
@@ -18,7 +21,7 @@ public class user
 	}
 	
 	public user(String userName, String password, String firstName,
-			String lastName, int age)
+			String lastName, String age)
 	{
 		this(password, firstName, lastName, age);
 		this.userName = userName;
@@ -26,7 +29,7 @@ public class user
 
 	
 	public user(String password, String firstName,
-			String lastName, int age) 
+			String lastName, String age) 
 	{
         this.password = password;
         this.firstName = firstName;
@@ -66,17 +69,44 @@ public class user
         this.lastName = lastName;
     }
     
-    public int age()
+    public String age()
     {
     	return age;
     }
- 
-    public void setAge(int age)
+    
+    public void setAge(String age)
     {
     	this.age = age;
     }
-
-
     
+    public String url()
+    {
+    	return url;
+    }
+    
+    public void setUrl(String url)
+    {
+    	this.url = url;
+    }
+
+    public String title()
+    {
+    	return title;
+    }
+    
+    public void setTitle(String title)
+    {
+    	this.title = title;
+    }
+    
+    public String description()
+    {
+    	return description;
+    }
+    
+    public void setDescription(String description)
+    {
+    	this.description = description;
+    }
 
 }

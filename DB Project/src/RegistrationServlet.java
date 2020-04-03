@@ -29,7 +29,7 @@ public class RegistrationServlet extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
     private userDAO userDAO;
-    String dbURL ="jdbc:mysql://localhost:3306/user";
+    String dbURL ="jdbc:mysql://localhost:3306/database_project";
     String usernameDB = "john";
     String passwordDB = "pass1234";
     user user = new user();
