@@ -14,8 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 
-@WebServlet("/userDAO")
-public class userDAO {     
+@WebServlet("/ReviewDAO")
+public class ReviewDAO {     
 	private static final long serialVersionUID = 1L;
 	private Connection connect = null;
 	private Statement statement = null;
@@ -23,7 +23,7 @@ public class userDAO {
 	private ResultSet resultSet = null;
 	
 	
-	public userDAO() {
+	public ReviewDAO() {
 
     }
 	       
@@ -44,28 +44,26 @@ public class userDAO {
         }
     }
     
-    public List<user> listAlluser() throws SQLException {
-        List<user> listuser = new ArrayList<user>();        
-        String sql = "SELECT * FROM user";      
+    public List<Review> listAllReview() throws SQLException {
+        List<Review> listReview = new ArrayList<Review>();        
+        String sql = "SELECT * FROM review";      
         connect_func();      
         statement =  (Statement) connect.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
      
 		while (resultSet.next()) {
-            String userName = resultSet.getString("userName");
-            String password = resultSet.getString("password");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
-            String age = resultSet.getString("age");
+            String url = resultSet.getString("url");
+            String review = resultSet.getString("review");
+            String description = resultSet.getString("description");
              
-            user user = new user(userName,password, firstName, lastName, age);
-            listuser.add(user);
+            Review Review = new Review(url,review, description);
+            listReview.add(Review);
         }      
 		
         resultSet.close();
         statement.close();         
         disconnect();        
-        return listuser;
+        return listReview;
     }
 	
 	 protected void disconnect() throws SQLException {
@@ -74,29 +72,29 @@ public class userDAO {
 	        }
 	    }
     
-    public user getuser(String userName) throws SQLException {
-    	user user = null;
-        String sql = "SELECT * FROM user WHERE userName = ?";
+    public Review getReview(String url) throws SQLException {
+    	Review Review = null;
+        String sql = "SELECT * FROM review WHERE url = ?";
          
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, userName);
+        preparedStatement.setString(1, url);
          
         ResultSet resultSet = preparedStatement.executeQuery();
          
         if (resultSet.next()) {
-            String password = resultSet.getString("password");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
-            String age = resultSet.getString("age");
+            String review = resultSet.getString("review");
+            String description = resultSet.getString("description");
              
-            user = new user(userName, password, firstName, lastName, age);
+            Review = new Review(url, review, description);
         }
          
         resultSet.close();
         statement.close();
          
-        return user;
+        return Review;
     }
+
+
     
 }

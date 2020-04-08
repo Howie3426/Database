@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert Video</title>
+<title>User Menu</title>
 </head>
 <body>
-		<h1>Insert Video</h1>
+			<h1>User Menu</h1>
 	
 	<a href = "insert.jsp"></a>
 	
@@ -15,27 +15,35 @@
  	<div class="container">
     <hr>
 
-    <label for="url"><b>URL</b></label>
-    <input type="text" placeholder="Enter URL" name="url" required>
+    <label for="search"><b>URL</b></label>
+    <input type="text" placeholder="URL" name="URL">
 
 	<br>
 	<br>
+	
+	
+    <label for="Title"><b>Title</b></label>
+    <input type="text" placeholder="Title" name="Title">
 
-    <label for="title"><b>title</b></label>
-    <input type="text" placeholder="Enter Title" name="title" required>
-    
 	<br>
 	<br>
-    
-    <label for = "description"><b>Description</b></label>
-    <input type = "text" placeholder = "Description" name = "description" required>
-    
+	
+	<label for="Description"><b>Description</b></label>
+    <input type="text" placeholder="Description" name="Description">
+
 	<br>
 	<br>
+	
+	<label for="Tags"><b>Tags</b></label>
+    <input type="text" placeholder="Tags" name="Tags">
+	
+	<br>
+	<br>
+	
+	 <button type="submit" class="Submit">Submit</button>
     
-    <label for = "date"><b>Date</b></label>
-    <input type = "text" placeholder = "date" name = "date" required>
-    </div>
-</form>
+   </div>
+   </form>
+    
 </body>
 </html>

@@ -14,8 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 
-@WebServlet("/userDAO")
-public class userDAO {     
+@WebServlet("/videoDAO")
+public class videoDAO {     
 	private static final long serialVersionUID = 1L;
 	private Connection connect = null;
 	private Statement statement = null;
@@ -23,7 +23,7 @@ public class userDAO {
 	private ResultSet resultSet = null;
 	
 	
-	public userDAO() {
+	public videoDAO() {
 
     }
 	       
@@ -44,28 +44,27 @@ public class userDAO {
         }
     }
     
-    public List<user> listAlluser() throws SQLException {
-        List<user> listuser = new ArrayList<user>();        
-        String sql = "SELECT * FROM user";      
+    public List<video> listAllvideo() throws SQLException {
+        List<video> listvideo = new ArrayList<video>();        
+        String sql = "SELECT * FROM video";      
         connect_func();      
         statement =  (Statement) connect.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
      
 		while (resultSet.next()) {
-            String userName = resultSet.getString("userName");
-            String password = resultSet.getString("password");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
-            String age = resultSet.getString("age");
+            String url = resultSet.getString("url");
+            String title = resultSet.getString("title");
+            String description = resultSet.getString("description");
+            String tags = resultSet.getString("tags");
              
-            user user = new user(userName,password, firstName, lastName, age);
-            listuser.add(user);
+            video video = new video(url,title, description, tags);
+            listvideo.add(video);
         }      
 		
         resultSet.close();
         statement.close();         
         disconnect();        
-        return listuser;
+        return listvideo;
     }
 	
 	 protected void disconnect() throws SQLException {
@@ -74,29 +73,28 @@ public class userDAO {
 	        }
 	    }
     
-    public user getuser(String userName) throws SQLException {
-    	user user = null;
-        String sql = "SELECT * FROM user WHERE userName = ?";
+    public video getvideo(String url) throws SQLException {
+    	video video = null;
+        String sql = "SELECT * FROM video WHERE url = ?";
          
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, userName);
+        preparedStatement.setString(1, url);
          
         ResultSet resultSet = preparedStatement.executeQuery();
          
         if (resultSet.next()) {
-            String password = resultSet.getString("password");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
-            String age = resultSet.getString("age");
+            String title = resultSet.getString("title");
+            String description = resultSet.getString("description");
+            String tags = resultSet.getString("tags");
              
-            user = new user(userName, password, firstName, lastName, age);
+            video = new video(url, title, description, tags);
         }
          
         resultSet.close();
         statement.close();
          
-        return user;
+        return video;
     }
     
 }

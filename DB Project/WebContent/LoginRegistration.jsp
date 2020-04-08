@@ -12,7 +12,7 @@
 	<h1>Login Registration Page</h1>
 	<p>Fill out the following fields</p>
 	
-	<a href = "LoginRegistrationPage.jsp"></a>
+	<a href = "LoginRegistration.jsp"></a>
 	
 	<form action = "RegistrationServlet" method = "post">
  	<div class="container">

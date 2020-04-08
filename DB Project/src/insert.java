@@ -1,11 +1,8 @@
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime;    
-
-import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
  
 import javax.servlet.RequestDispatcher;
@@ -28,19 +25,17 @@ import java.sql.PreparedStatement;
  * @author www.codejava.net
  */
 //@SuppressWarnings("unused")
-@WebServlet("/usermenu")
-public class usermenu extends HttpServlet 
+@WebServlet("/insert")
+public class insert extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
     private userDAO userDAO;
     String dbURL ="jdbc:mysql://localhost:3306/database_project";
     String username = "john";
     String password = "pass1234";
-    Scanner input = new Scanner(System.in);
     
     
-    public void init() 
-    {
+    public void init() {
         userDAO = new userDAO(); 
     }
     
@@ -51,43 +46,15 @@ public class usermenu extends HttpServlet
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {  
-    	String login = request.getServletPath();
-    	System.out.print(login);
-    	System.out.print("Login Attempt");
-    	attemptLogin(request, response);
-
+    	String insert = request.getServletPath();
+    	System.out.print(insert);
+    	System.out.print("Attemt to upload");
+    	attemptUpload(request, response);
     }
-        
-   
-	 private void attemptLogin(HttpServletRequest request, HttpServletResponse response)
+          
+   	 private void attemptUpload(HttpServletRequest request, HttpServletResponse response)
 	 	throws ServletException, IOException
 	 {
-        	System.out.println("User obtained");
-        	String user = null;
-        	user = request.getParameter(username);
-        	
-        	String url;
-        	String description;
-        	String title;
-      
-			if(user == null)
-        	{
-        		String LoginFailed = "Not Logged in.";
-	        	request.setAttribute("loginFailed", LoginFailed);
-	        }
-			else
-			{
-				System.out.print("Enter URL: ");
-				url = input.next();
-				System.out.print("Enter title: ");
-				title = input.nextLine();
-				System.out.print("Enter description: ");
-				description = input.nextLine();
-				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-				LocalDateTime now = LocalDateTime.now();  
-				System.out.println(dtf.format(now));  
-			}
-        
-   }
-        
+   		 
+	 }
 }

@@ -6,10 +6,7 @@ public class user
 	protected String lastName;
 	protected String password;
 	protected String age;
-	protected String url;
-	protected String description;
-	protected String title;
-	
+		
 	public user()
 	{
 	
@@ -77,36 +74,6 @@ public class user
     public void setAge(String age)
     {
     	this.age = age;
-    }
-    
-    public String url()
-    {
-    	return url;
-    }
-    
-    public void setUrl(String url)
-    {
-    	this.url = url;
-    }
-
-    public String title()
-    {
-    	return title;
-    }
-    
-    public void setTitle(String title)
-    {
-    	this.title = title;
-    }
-    
-    public String description()
-    {
-    	return description;
-    }
-    
-    public void setDescription(String description)
-    {
-    	this.description = description;
     }
 
 }

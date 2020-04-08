@@ -20,7 +20,11 @@
 
 	<br>
 	<br>
-
+	
+	<a href = "insert.jsp"><button>Upload</button></a>
+	<br>
+	<br>
+	<a href = "favComedian.jsp"><button>Favorite Comedian List</button></a>
     
    </div>
    </form>

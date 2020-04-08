@@ -14,8 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 
-@WebServlet("/userDAO")
-public class userDAO {     
+@WebServlet("/favComedianDAO")
+public class favComedianDAO {     
 	private static final long serialVersionUID = 1L;
 	private Connection connect = null;
 	private Statement statement = null;
@@ -23,7 +23,7 @@ public class userDAO {
 	private ResultSet resultSet = null;
 	
 	
-	public userDAO() {
+	public favComedianDAO() {
 
     }
 	       
@@ -44,28 +44,26 @@ public class userDAO {
         }
     }
     
-    public List<user> listAlluser() throws SQLException {
-        List<user> listuser = new ArrayList<user>();        
-        String sql = "SELECT * FROM user";      
+    public List<favComedian> listAllfavComedian() throws SQLException {
+        List<favComedian> listfavComedian = new ArrayList<favComedian>();        
+        String sql = "SELECT * FROM favoriteComedian";      
         connect_func();      
         statement =  (Statement) connect.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
      
 		while (resultSet.next()) {
-            String userName = resultSet.getString("userName");
-            String password = resultSet.getString("password");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
-            String age = resultSet.getString("age");
+            String favComedianF = resultSet.getString("favComedianF");
+            String favComedianL = resultSet.getString("favComedianL");
+            int favComedianID = resultSet.getInt("favComedianID");
              
-            user user = new user(userName,password, firstName, lastName, age);
-            listuser.add(user);
+            favComedian favComedian = new favComedian(favComedianF,favComedianL, favComedianID);
+            listfavComedian.add(favComedian);
         }      
 		
         resultSet.close();
         statement.close();         
         disconnect();        
-        return listuser;
+        return listfavComedian;
     }
 	
 	 protected void disconnect() throws SQLException {
@@ -74,29 +72,55 @@ public class userDAO {
 	        }
 	    }
     
-    public user getuser(String userName) throws SQLException {
-    	user user = null;
-        String sql = "SELECT * FROM user WHERE userName = ?";
+    public favComedian getfavComedian(int ID) throws SQLException {
+    	favComedian favComedian = null;
+        String sql = "SELECT * FROM favComedian WHERE ID = ?";
          
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, userName);
+        preparedStatement.setInt(1, ID);
          
         ResultSet resultSet = preparedStatement.executeQuery();
          
         if (resultSet.next()) {
-            String password = resultSet.getString("password");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
-            String age = resultSet.getString("age");
+            String favComedianF = resultSet.getString("favComedianF");
+            String favComedianL = resultSet.getString("favComedianL");
+            int favComedianID = resultSet.getInt("favComedianID");
              
-            user = new user(userName, password, firstName, lastName, age);
+            favComedian = new favComedian(favComedianF, favComedianL, favComedianID);
         }
          
         resultSet.close();
         statement.close();
          
-        return user;
+        return favComedian;
     }
-    
+
+	public static void removefavComedian(String username, int comedianID)
+	{
+		String jdbcUrl = "jdbc:mysql://localhost:3306/Database Project";
+	    String uname = "john";
+	    String password = "pass1234";
+		String sql = "delete from employee where emp_id=?";
+	    try (Connection conn = DriverManager.getConnection(jdbcUrl, uname, password); 
+	        PreparedStatement stmt = conn.prepareStatement(sql)) {
+	      
+	      stmt.setInt(1, 2);
+	      stmt.executeUpdate();
+	      
+	      System.out.println("Record deleted successfully");
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    }
+	  }
+	
+
+	public static void createFavorite(String username, int comedianID)
+	{
+				
+	}
+
+
+
+
 }

@@ -1,3 +1,4 @@
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,8 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 
-@WebServlet("/userDAO")
-public class userDAO {     
+@WebServlet("/comedianDAO")
+public class comedianDAO {     
 	private static final long serialVersionUID = 1L;
 	private Connection connect = null;
 	private Statement statement = null;
@@ -23,7 +24,7 @@ public class userDAO {
 	private ResultSet resultSet = null;
 	
 	
-	public userDAO() {
+	public comedianDAO() {
 
     }
 	       
@@ -44,28 +45,27 @@ public class userDAO {
         }
     }
     
-    public List<user> listAlluser() throws SQLException {
-        List<user> listuser = new ArrayList<user>();        
-        String sql = "SELECT * FROM user";      
+    public List<comedian> listcomedian() throws SQLException {
+        List<comedian> listcomedian = new ArrayList<comedian>();        
+        String sql = "SELECT * FROM comedian";      
         connect_func();      
         statement =  (Statement) connect.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
      
 		while (resultSet.next()) {
-            String userName = resultSet.getString("userName");
-            String password = resultSet.getString("password");
             String firstName = resultSet.getString("firstName");
             String lastName = resultSet.getString("lastName");
-            String age = resultSet.getString("age");
+            int date = resultSet.getInt("date");
+            int id = resultSet.getInt("id");
              
-            user user = new user(userName,password, firstName, lastName, age);
-            listuser.add(user);
+            comedian comedian = new comedian(firstName,lastName, date, id);
+            listcomedian.add(comedian);
         }      
 		
         resultSet.close();
         statement.close();         
         disconnect();        
-        return listuser;
+        return listcomedian;
     }
 	
 	 protected void disconnect() throws SQLException {
@@ -74,29 +74,29 @@ public class userDAO {
 	        }
 	    }
     
-    public user getuser(String userName) throws SQLException {
-    	user user = null;
-        String sql = "SELECT * FROM user WHERE userName = ?";
+    public comedian getcomedian(int ID) throws SQLException {
+    	comedian comedian = null;
+        String sql = "SELECT * FROM comedian WHERE ID = ?";
          
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, userName);
+        preparedStatement.setInt(1, ID);
          
         ResultSet resultSet = preparedStatement.executeQuery();
          
         if (resultSet.next()) {
-            String password = resultSet.getString("password");
             String firstName = resultSet.getString("firstName");
             String lastName = resultSet.getString("lastName");
-            String age = resultSet.getString("age");
+            int date = resultSet.getInt("date");
+            int id = resultSet.getInt("id");
              
-            user = new user(userName, password, firstName, lastName, age);
+            comedian = new comedian(firstName, lastName, date, id);
         }
          
         resultSet.close();
         statement.close();
          
-        return user;
+        return comedian;
     }
     
 }

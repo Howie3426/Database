@@ -23,6 +23,95 @@
     <servlet-name>RegistrationServlet</servlet-name>
     <url-pattern>/RegistrationServlet</url-pattern>
   </servlet-mapping>
- 
+  
+  <servlet>
+    <description></description>
+    <servlet-name>favComedian</servlet-name>
+    <servlet-class>favComedian</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>favComedian</servlet-name>
+    <url-pattern>/favComedian</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <servlet-name>insert</servlet-name>
+    <servlet-class>insert</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>insert</servlet-name>
+    <url-pattern>/insert</url-pattern>
+  </servlet-mapping>
+  
+ <servlet>
+    <description></description>
+    <servlet-name>comedianDao</servlet-name>
+    <servlet-class>comedianDAO</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>comedianDAO</servlet-name>
+    <url-pattern>/comedianDAO</url-pattern>
+  </servlet-mapping>
+  
+<servlet>
+    <description></description>
+    <servlet-name>favComedianDAO</servlet-name>
+    <servlet-class>favComedianDAO</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>favComedianDAO</servlet-name>
+    <url-pattern>/favComedianDAO</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <description></description>
+    <servlet-name>ReviewDAO</servlet-name>
+    <servlet-class>ReviewDAO</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewDAO</servlet-name>
+    <url-pattern>/ReviewDAO</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <description></description>
+    <servlet-name>userDAO</servlet-name>
+    <servlet-class>userDAO</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userDAO</servlet-name>
+    <url-pattern>/userDAO</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <description></description>
+    <servlet-name>videoDAO</servlet-name>
+    <servlet-class>videoDAO</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>videoDAO</servlet-name>
+    <url-pattern>/videoDAO</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <description></description>
+    <servlet-name>VideoPlayerServlet</servlet-name>
+    <servlet-class>VideoPlayerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoPlayerServlet</servlet-name>
+    <url-pattern>/VideoPlayerServlet</url-pattern>
+</servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>
+ 
   
